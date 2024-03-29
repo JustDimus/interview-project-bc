@@ -31,7 +31,7 @@ public class HackerNewsFetchService : BackgroundService
 
             await _hackerNewsService.FetchBestStoriesAsync(stoppingToken);
 
-            await Task.Delay(_hackerNewsOptions.BestStoriesRefreshTimeInSeconds, stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(_hackerNewsOptions.BestStoriesRefreshTimeInSeconds), stoppingToken);
         }
     }
 }

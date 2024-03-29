@@ -6,7 +6,7 @@ namespace InterviewProject.API.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddOptions(this IServiceCollection services)
+    public static IServiceCollection AddHackerNewsOptions(this IServiceCollection services)
     {
         services.AddOptions<HackerNewsOptions>(nameof(HackerNewsOptions));
 

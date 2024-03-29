@@ -12,9 +12,13 @@ builder.Services
     .AddDistributedMemoryCache();
 
 builder.Services
+    .AddHackerNewsOptions();
+
+builder.Services
     .AddControllers();
 
 builder.Services
+    .AddScoped<ExceptionMiddleware>()
     .AddSingleton<HackerNewsFetchService>()
     .AddSingleton<IHackerNewsService, HackerNewsService>();
 

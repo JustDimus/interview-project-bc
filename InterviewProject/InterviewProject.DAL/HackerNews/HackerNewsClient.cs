@@ -88,7 +88,7 @@ public class HackerNewsClient : IHackerNewsClient
             return story;
         }
 
-        var response = await _httpClient.GetAsync($"{_hackerNewsOptions.GetItemEndpoint}/{storyId}", cancellationToken);
+        var response = await _httpClient.GetAsync($"{string.Format(_hackerNewsOptions.GetItemEndpoint, storyId)}", cancellationToken);
 
         response.EnsureSuccessStatusCode();
 
@@ -114,15 +114,10 @@ public class HackerNewsClient : IHackerNewsClient
     private Story ConvertItemToStory(Item item)
         => new()
         {
-            Id = item.Id,
             Score = item.Score.GetValueOrDefault(),
-            Kids = item.Kids!,
             Descendants = item.Descendants.GetValueOrDefault(),
             Author = item.Author,
             Created = item.Created,
-            Dead = item.Dead,
-            Deleted = item.Deleted,
-            Text = item.Text,
             Title = item.Title!,
             Url = item.Url!
         };
