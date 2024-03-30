@@ -15,12 +15,13 @@ builder.Services
     .AddHackerNewsOptions();
 
 builder.Services
-    .AddControllers();
+    .AddControllers()
+    .AddNewtonsoftJson();
 
 builder.Services
     .AddScoped<ExceptionMiddleware>()
     .AddSingleton<HackerNewsFetchService>()
-    .AddSingleton<IHackerNewsService, HackerNewsService>();
+    .AddScoped<IHackerNewsService, HackerNewsService>();
 
 builder.Services
     .AddHostedService<HackerNewsFetchService>();
